@@ -13,12 +13,16 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import {Link} from 'react-router-dom';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-const pages = ['Contact'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const pages = ['CONTACT', 'MUSIC', 'SHOWS'];
 
 function ResponsiveAppBar({activeTab}) {
   const [anchorElNav, setAnchorElNav] = useState(null)
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -26,7 +30,6 @@ function ResponsiveAppBar({activeTab}) {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
   return (
     <AppBar position="static" style={{backgroundColor: 'black'}}>
       <Container maxWidth="xl">
@@ -44,7 +47,7 @@ function ResponsiveAppBar({activeTab}) {
               </Button>
               <Button
               type='link'
-                key={'contact'}
+                key={'instagram'}
                 href={'https://www.instagram.com/furiousgeorgemusic/'}
                 target="_blank"
                 onClick={handleCloseNavMenu}
@@ -54,10 +57,13 @@ function ResponsiveAppBar({activeTab}) {
               </Button>
            
           </Box>
-          <Button href={'/'}>
-          <img src={`${process.env.PUBLIC_URL}/FG-LOGO-WHITE.png`} style={{display:{ xs: 'none', md: 'flex' }, height: '20vh'}}/>
+          <Button href={'/'} style={{display: (isMobile?  'none':'flex' )}}>
+          <img src={`${process.env.PUBLIC_URL}/FG-LOGO-WHITE.png`} style={{display: (isMobile?  'none':'flex' ), height: '20vh'}}/>
 </Button>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', flexDirection:'row-reverse' } }}>
+         
+          <Button href={'/'} style={{display: isMobile ? 'flex': 'none', color: 'white'}}>
+Furious George Music</Button>
+<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', flexDirection:  'row-reverse' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -87,31 +93,22 @@ function ResponsiveAppBar({activeTab}) {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page} onClick={handleCloseNavMenu} style={{flexDirection: 'row-reverse'}}>
+                  {page === 'CONTACT' && (
+                    <Button type='link' key={page} href='/contact' style={{display:'flex', color: 'black', flexDirection:'row-reverse'}}>{page}</Button>
+                  )}
+                 {page === 'MUSIC' && (
+                    <Button type='link' key={page}  href='https://on.soundcloud.com/j9dRc7KGpoBcT8Qq8
+                    '
+                    target="_blank"  style={{display:'flex', color: 'black', flexDirection:'row-reverse'}}>{page}</Button>
+                  )}
+                  {page === 'SHOWS' && (
+                    <Button type='link' href='/shows' key={page} style={{display:'flex', alignItems:'right', color: 'black', flexDirection:'row-reverse'}}>{page}</Button>
+                  )}
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
           <Button
               type='link'
