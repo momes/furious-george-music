@@ -12,17 +12,7 @@ function Shows() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const shows = [
-    {date: "APRIL 2 2022",
-      name: "EVENT NAME",
-      location: "Something Club",
-      ticketLink: "www.link.com",
-    },
-    {date: "APRIL 2 2022",
-      name: "EVENT NAME",
-      location: "Something Club",
-    }
-  ]
+  const shows = []
   return (
     <div className="Shows" style={{overflowX:"hidden"}}>
       <Navigation activeTab={'shows'}/>
