@@ -20,7 +20,7 @@ function Contact() {
           <span style={{fontSize: '1em'}}><a style={{color: 'yellow'}} href='mailto: management@furiousgeorgemusic.com' >management@furiousgeorgemusic.com</a></span> 
           </Typography>
         <Box gridColumn={isMobile? "span 12" :"span 6"}>
-           <img src={`${process.env.PUBLIC_URL}/george-contact.png`} style={{width:'100%'}}/>
+           <img alt='grg' src={`${process.env.PUBLIC_URL}/george-contact.png`} style={{width:'100%'}}/>
         </Box>
        
       </Box>
@@ -28,7 +28,7 @@ function Contact() {
       (
       <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2} style={{flexDirection: 'row-reverse'}}>
         <Box gridColumn={isMobile? "span 12" :"span 6"}>
-           <img src={`${process.env.PUBLIC_URL}/george-contact.png`} style={{width:'100%'}}/>
+           <img alt='grg-contact' src={`${process.env.PUBLIC_URL}/george-contact.png`} style={{width:'100%'}}/>
         </Box>
         <Box gridColumn={isMobile ? "span 12": "span 6"}>
         <Typography style={{color: 'white', marginTop: '25vh'}}>
